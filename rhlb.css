@@ -1,0 +1,266 @@
+@import url('https://www.grinnellplans.com/styles/starter_defaults.css');
+
+/*----------------Resets----------------*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/*---------------variables---------------*/
+
+@font-face {
+  font-family: 'rhlb-body';
+  src: url('https://fonts.googleapis.com/css?family=Open+Sans:300,400')
+}
+
+/*-------------------basic styles-------------------*/
+
+body {
+  width: 100%;
+}
+
+h1 {
+  font-family: 'rhlb-body', arial, sans-serif;
+  font-weight: bold;
+}
+
+p, h2, h3, h4, h5, li, a {
+  font-family: 'rhlb-body', arial, sans-serif;
+}
+
+p, li, a {
+  font-size: 11pt;
+  line-height: 1.25;
+}
+
+button {
+	border: none;
+}
+
+/*Styling easy navigation links*/
+#autoread .current .first a,
+a#mainlink_edit {
+  font-weight: bold;
+  color: #000;
+}
+
+/*Adding brackets to plan names*/
+#autoread .current .first a::before,
+.username .value::before {
+  content: "[";
+}
+#autoread .current .first a::after,
+.username .value::after {
+  content: "]";
+}
+
+/*-------------------nav-------------------*/
+
+/*header visuals*/
+#logo {
+  position: fixed;
+  background: #cccccc; /* Old browsers */
+  background: -moz-linear-gradient(bottom, #cccccc 0%, #9b9b9b 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(bottom, #cccccc 0%,#9b9b9b 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to top, #cccccc 0%,#9b9b9b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  width: 100%;
+  height: 100px;
+  margin: 0;
+}
+
+#logo a {
+  display: none;
+}
+
+#logo::before {
+  content: "[P]";
+  position: fixed;
+  width: 10%;
+  top: 8px;
+  left: 45%;
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: 'rhlb-body', arial, sans-serif;
+}
+
+/*--------------------
+Creating the menus
+-------------------*/
+#links,
+#autoread {
+  position: fixed;
+  top: 27.5px;
+  margin: 0 20px;
+}
+
+#links h2,
+#autoread h2 {
+  position: relative;
+  display: block;
+  padding-top: 10px;
+  z-index: 201;
+  text-align: center;
+}
+
+#links {
+  width: 25%;
+  left: 2%;
+}
+
+#autoread {
+  width: 25%;
+  right: 2%;
+}
+
+/*placing the ul element offscreen when inactive*/
+#autoread > ul,
+#links > ul {
+	position: absolute;
+	top:-9999px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	z-index: 200;
+}
+
+#autoread:hover > ul,
+#links:hover > ul {
+	top: -5px;
+	left: -5px;
+	right: -5px;
+	padding: 80px 15px 20px;
+	background: #E6E9EC;
+}
+
+/*Styling the fonts within the nav*/
+#nav h2 {
+  font-size: 2rem;
+}
+
+.linkslist a,
+.autoreadlevel a {
+  font-size: 2rem;
+}
+
+/*Isolating the first plan in the current autoread
+level and placing the link within the footer*/
+
+#autoread .current .first a {
+  display: block;
+  position: fixed;
+  z-index: 300;
+  bottom: 25.5px;
+  right: 0px;
+  text-align: right;
+  padding: 27.5px 5% 0 20px;
+}
+
+/*Placing the edit plan link within the footer*/
+#mainlink_edit {
+  display: block;
+  position: fixed;
+  z-index: 301;
+  bottom: -2px;
+  left: 0;
+  padding: 27.5px 0 0 5%;
+  /*expanding the background of this element to serve as a pseudo footer*/
+    background: #cccccc; /* Old browsers */
+    background: -moz-linear-gradient(bottom, #cccccc 0%, #9b9b9b 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(bottom, #cccccc 0%,#9b9b9b 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to top, #cccccc 0%,#9b9b9b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    width: 100%;
+    height: 75px;
+}
+
+/*placing the finger in the footer UNFINISHED*/
+
+/*#finger {
+  position:fixed;
+  bottom: 0;
+  left: 0;
+}*/
+
+
+/*-------------------main-------------------*/
+#main {
+  margin: 100px 0;
+  padding: 10px 5%;
+  clear: both;
+  background-color: #fff;
+}
+
+/*styling the username, title and last update date
+of the plan being read*/
+
+#header .title,
+.lastlogin .long {
+  display: none;
+}
+
+.username .value {
+  font-size: 5rem;
+  float: left;
+  margin-bottom: 10px;
+}
+
+.lastupdated .long {
+  display: inline;
+  float: right;
+  width: 20%;
+  text-align: right;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.planname .value {
+  float: left;
+  clear: left;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 5px 20px 50px 5px;
+}
+
+/*styling the body of the plan*/
+
+.plan_text {
+  clear: both;
+  /*prevent over-long lines breaking out*/
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+}
+
+
+/*To do list
+- define a style for horizontal line breaks
+- add brackets where they'd be valuable
+- place the search/finger somewhere???
+*/
+
+/*-----------------------------------
+RESPONSIVE STYLES TO DO
+-----------------------------------*/
+
+/*Landscape phone & portrait Tablet*/
+
+/*Desktop*/
