@@ -32,6 +32,11 @@ ul {
   src: url('https://fonts.googleapis.com/css?family=Open+Sans:300,400')
 }
 
+@font-face {
+  font-family: 'icons';
+  src: url('https://use.fontawesome.com/c748b186fd.js');
+}
+
 /*-------------------basic styles-------------------*/
 
 body {
@@ -43,20 +48,45 @@ h1 {
   font-weight: bold;
 }
 
-p, h2, h3, h4, h5, li, a {
+p, h2, h3, h4, h5, li, a, span {
   font-family: 'rhlb-body', arial, sans-serif;
 }
 
-p, li, a {
-  font-size: 11pt;
-  line-height: 1.25;
+p, li {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+a {
+  color: #327bc9;
+  text-decoration: none;
+  font-size: inherit;
+}
+
+a:visited {
+  color: #587ca3;
 }
 
 button {
-	border: none;
+  min-height: 55px;
+  margin: 0 20px 0 0;
+  padding: 10px;
+  background: #3C474B;
+  border: 1px solid #4F7CAC;
+  box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.36);
+  border-radius: 1px;
+  font-size: 35px;
+  color: white;
+}
+
+.infomessage {
+  margin: 40px 10px;
+  font-size: 13px;
+  background: rgba(204, 126, 133, 0.2);
 }
 
 /*Styling easy navigation links*/
+
 #autoread .current .first a,
 a#mainlink_edit {
   font-weight: bold;
@@ -78,12 +108,14 @@ a#mainlink_edit {
 /*header visuals*/
 #logo {
   position: fixed;
-  background: #cccccc; /* Old browsers */
-  background: -moz-linear-gradient(bottom, #cccccc 0%, #9b9b9b 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(bottom, #cccccc 0%,#9b9b9b 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to top, #cccccc 0%,#9b9b9b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  top: 0;
+  background: #4F7CAC;
+  border-bottom: #601636 8px solid;
+  -webkit-box-shadow: 0px -5px 15px 6px rgba(161,161,161,1);
+  -moz-box-shadow: 0px -5px 15px 6px rgba(161,161,161,1);
+  box-shadow: 0px -5px 15px 6px rgba(161,161,161,1);
   width: 100%;
-  height: 100px;
+  height: 135px;
   margin: 0;
 }
 
@@ -95,11 +127,13 @@ a#mainlink_edit {
   content: "[P]";
   position: fixed;
   width: 10%;
-  top: 8px;
+  top: 25.5px;
   left: 45%;
-  font-size: 4rem;
+  color: #fff;
+  font-size: 65px;
   font-weight: bold;
   font-family: 'rhlb-body', arial, sans-serif;
+  letter-spacing: 9px;
 }
 
 /*--------------------
@@ -108,15 +142,16 @@ Creating the menus
 #links,
 #autoread {
   position: fixed;
-  top: 27.5px;
+  top: 45px;
   margin: 0 20px;
+  z-index: 201;
 }
 
 #links h2,
 #autoread h2 {
   position: relative;
   display: block;
-  padding-top: 10px;
+  padding: 5px 0;
   z-index: 201;
   text-align: center;
 }
@@ -127,8 +162,13 @@ Creating the menus
 }
 
 #autoread {
-  width: 25%;
+  width: 30%;
   right: 2%;
+}
+
+#links h2:hover,
+#autoread h2:hover {
+  background: #601636;
 }
 
 /*placing the ul element offscreen when inactive*/
@@ -149,16 +189,18 @@ Creating the menus
 	right: -5px;
 	padding: 80px 15px 20px;
 	background: #E6E9EC;
+  -webkit-box-shadow: 0px 0px 21px 1px rgba(0,0,0,0.36);
+  -moz-box-shadow: 0px 0px 21px 1px rgba(0,0,0,0.36);
+  box-shadow: 0px 0px 21px 1px rgba(0,0,0,0.36);
 }
 
 /*Styling the fonts within the nav*/
-#nav h2 {
-  font-size: 2rem;
-}
-
-.linkslist a,
-.autoreadlevel a {
-  font-size: 2rem;
+#nav h2,
+#autoread .current .first a,
+a#mainlink_edit {
+  font-size: 40px;
+  color: #fff;
+  text-decoration: none;
 }
 
 /*Isolating the first plan in the current autoread
@@ -183,26 +225,49 @@ level and placing the link within the footer*/
   left: 0;
   padding: 27.5px 0 0 5%;
   /*expanding the background of this element to serve as a pseudo footer*/
-    background: #cccccc; /* Old browsers */
-    background: -moz-linear-gradient(bottom, #cccccc 0%, #9b9b9b 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(bottom, #cccccc 0%,#9b9b9b 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to top, #cccccc 0%,#9b9b9b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: #4F7CAC;
+    border-top: solid #601636 10px;
+    -webkit-box-shadow: 0px 5px 15px 6px rgba(161,161,161,1);
+    -moz-box-shadow: 0px 5px 15px 6px rgba(161,161,161,1);
+    box-shadow: 0px 5px 15px 6px rgba(161,161,161,1);
     width: 100%;
     height: 75px;
 }
 
 /*placing the finger in the footer UNFINISHED*/
 
-/*#finger {
-  position:fixed;
-  bottom: 0;
-  left: 0;
-}*/
+#finger {
+  display: block;
+  position: fixed;
+  bottom: 25.5px;
+  z-index: 300;
+  padding: 0 30% 0 30%;
+}
 
+#finger button {
+  display: none;
+}
+
+#finger input {
+  height: 55px;
+  font-size: 40px;
+  background: url(images/magnifier.svg) no-repeat;
+  background-position: center;
+  border: none;
+}
+
+#finger input:focus {
+  width: 100%;
+  margin-left: 0;
+  background: url(images/magnifier.svg) no-repeat;
+  background-position: right;
+  background: #fff;
+  transition: all .6s cubic-bezier(.35,.01,.59,.96);
+}
 
 /*-------------------main-------------------*/
 #main {
-  margin: 100px 0;
+  margin: 145px 0 0 0;
   padding: 10px 5%;
   clear: both;
   background-color: #fff;
@@ -217,7 +282,7 @@ of the plan being read*/
 }
 
 .username .value {
-  font-size: 5rem;
+  font-size: 90px;
   float: left;
   margin-bottom: 10px;
 }
@@ -227,14 +292,14 @@ of the plan being read*/
   float: right;
   width: 20%;
   text-align: right;
-  font-size: 1.6rem;
+  font-size: 30px;
   font-weight: bold;
 }
 
 .planname .value {
   float: left;
   clear: left;
-  font-size: 2rem;
+  font-size: 42px;
   font-weight: bold;
   margin: 5px 20px 50px 5px;
 }
@@ -250,15 +315,59 @@ of the plan being read*/
     word-break: break-word;
 }
 
+/* Styling the bottom buttons */
+/*Radio buttons and button for autoread*/
+#autoreadadd {
+  font-family: 'rhlb-body', arial, sans-serif;
+  font-size: 50px;
+  padding: 0 10px;
+}
 
-/*To do list
+#block button {
+  background-color: #601636;
+  margin-top: 20px;
+}
+
+.radioinput {
+  padding: 0px 30px 0px 0px;
+}
+
+input[type=radio],
+input[type=checkbox] {
+  width: 30px;
+  height: 30px;
+}
+
+/*-------------------footer-------------------*/
+#poweredby,
+#legal {
+  padding: 10px 5%;
+  clear: both;
+  background-color: #fff;
+  font-size: 12px;
+  color: #3C474B;
+}
+
+#legal {
+    margin: 0 0 145px 0;
+}
+
+#justupdated {
+  margin: 60px 0 30px 0;
+  padding: 10px 0;
+  background: #D1D1D1;
+  border-left: 20px solid #3C474B;
+  border-right: 20px solid #3C474B;
+  text-align: center;
+}
+
+/*TODO list
 - define a style for horizontal line breaks
 - add brackets where they'd be valuable
-- place the search/finger somewhere???
 */
 
 /*-----------------------------------
-RESPONSIVE STYLES TO DO
+RESPONSIVE STYLES TODO
 -----------------------------------*/
 
 /*Landscape phone & portrait Tablet*/
